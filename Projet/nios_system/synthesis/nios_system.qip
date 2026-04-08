@@ -2,7 +2,7 @@ set_global_assignment -entity "nios_system" -library "nios_system" -name IP_TOOL
 set_global_assignment -entity "nios_system" -library "nios_system" -name IP_TOOL_VERSION "13.0sp1"
 set_global_assignment -entity "nios_system" -library "nios_system" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "nios_system" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../nios_system.sopcinfo"]
-set_instance_assignment -entity "nios_system" -library "nios_system" -name SLD_INFO "QSYS_NAME nios_system HAS_SOPCINFO 1 GENERATION_ID 1775125328"
+set_instance_assignment -entity "nios_system" -library "nios_system" -name SLD_INFO "QSYS_NAME nios_system HAS_SOPCINFO 1 GENERATION_ID 1775658262"
 set_global_assignment -library "nios_system" -name MISC_FILE [file join $::quartus(qip_path) "../../nios_system.cmp"]
 set_global_assignment -name SYNTHESIS_ONLY_QIP ON
 set_global_assignment -library "nios_system" -name MISC_FILE [file join $::quartus(qip_path) "../../nios_system.qsys"]
@@ -34,9 +34,10 @@ set_global_assignment -library "nios_system" -name SYSTEMVERILOG_FILE [file join
 set_global_assignment -library "nios_system" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_master_agent.sv"]
 set_global_assignment -library "nios_system" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_slave_translator.sv"]
 set_global_assignment -library "nios_system" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_master_translator.sv"]
-set_global_assignment -library "nios_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_fin_sl_pio.v"]
-set_global_assignment -library "nios_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_start_sl_pio.v"]
-set_global_assignment -library "nios_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_MOTOR_LEFT.v"]
+set_global_assignment -library "nios_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_resultat_pio.v"]
+set_global_assignment -library "nios_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_data_ready_pio.v"]
+set_global_assignment -library "nios_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_op_sel_pio.v"]
+set_global_assignment -library "nios_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_data_capture_pio.v"]
 set_global_assignment -library "nios_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_clocks.v"]
 set_global_assignment -library "nios_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_SDRAM.v"]
 set_global_assignment -library "nios_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_JTAG.v"]
@@ -118,15 +119,18 @@ set_global_assignment -entity "altera_merlin_slave_translator" -library "nios_sy
 set_global_assignment -entity "altera_merlin_master_translator" -library "nios_system" -name IP_TOOL_NAME "altera_merlin_master_translator"
 set_global_assignment -entity "altera_merlin_master_translator" -library "nios_system" -name IP_TOOL_VERSION "13.0"
 set_global_assignment -entity "altera_merlin_master_translator" -library "nios_system" -name IP_TOOL_ENV "Qsys"
-set_global_assignment -entity "nios_system_fin_sl_pio" -library "nios_system" -name IP_TOOL_NAME "altera_avalon_pio"
-set_global_assignment -entity "nios_system_fin_sl_pio" -library "nios_system" -name IP_TOOL_VERSION "13.0.1.99.2"
-set_global_assignment -entity "nios_system_fin_sl_pio" -library "nios_system" -name IP_TOOL_ENV "Qsys"
-set_global_assignment -entity "nios_system_start_sl_pio" -library "nios_system" -name IP_TOOL_NAME "altera_avalon_pio"
-set_global_assignment -entity "nios_system_start_sl_pio" -library "nios_system" -name IP_TOOL_VERSION "13.0.1.99.2"
-set_global_assignment -entity "nios_system_start_sl_pio" -library "nios_system" -name IP_TOOL_ENV "Qsys"
-set_global_assignment -entity "nios_system_MOTOR_LEFT" -library "nios_system" -name IP_TOOL_NAME "altera_avalon_pio"
-set_global_assignment -entity "nios_system_MOTOR_LEFT" -library "nios_system" -name IP_TOOL_VERSION "13.0.1.99.2"
-set_global_assignment -entity "nios_system_MOTOR_LEFT" -library "nios_system" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "nios_system_resultat_pio" -library "nios_system" -name IP_TOOL_NAME "altera_avalon_pio"
+set_global_assignment -entity "nios_system_resultat_pio" -library "nios_system" -name IP_TOOL_VERSION "13.0.1.99.2"
+set_global_assignment -entity "nios_system_resultat_pio" -library "nios_system" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "nios_system_data_ready_pio" -library "nios_system" -name IP_TOOL_NAME "altera_avalon_pio"
+set_global_assignment -entity "nios_system_data_ready_pio" -library "nios_system" -name IP_TOOL_VERSION "13.0.1.99.2"
+set_global_assignment -entity "nios_system_data_ready_pio" -library "nios_system" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "nios_system_op_sel_pio" -library "nios_system" -name IP_TOOL_NAME "altera_avalon_pio"
+set_global_assignment -entity "nios_system_op_sel_pio" -library "nios_system" -name IP_TOOL_VERSION "13.0.1.99.2"
+set_global_assignment -entity "nios_system_op_sel_pio" -library "nios_system" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "nios_system_data_capture_pio" -library "nios_system" -name IP_TOOL_NAME "altera_avalon_pio"
+set_global_assignment -entity "nios_system_data_capture_pio" -library "nios_system" -name IP_TOOL_VERSION "13.0.1.99.2"
+set_global_assignment -entity "nios_system_data_capture_pio" -library "nios_system" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -entity "nios_system_SDRAM" -library "nios_system" -name IP_TOOL_NAME "altera_avalon_new_sdram_controller"
 set_global_assignment -entity "nios_system_SDRAM" -library "nios_system" -name IP_TOOL_VERSION "13.0.1.99.2"
 set_global_assignment -entity "nios_system_SDRAM" -library "nios_system" -name IP_TOOL_ENV "Qsys"

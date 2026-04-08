@@ -44,22 +44,6 @@
          type = "int";
       }
    }
-   element MOTOR_LEFT
-   {
-      datum _sortIndex
-      {
-         value = "8";
-         type = "int";
-      }
-   }
-   element MOTOR_RIGHT
-   {
-      datum _sortIndex
-      {
-         value = "9";
-         type = "int";
-      }
-   }
    element SDRAM
    {
       datum _sortIndex
@@ -80,7 +64,7 @@
    {
       datum baseAddress
       {
-         value = "67121296";
+         value = "67121280";
          type = "String";
       }
    }
@@ -100,7 +84,15 @@
          type = "int";
       }
    }
-   element dir_rot_pio
+   element data_capture_pio
+   {
+      datum _sortIndex
+      {
+         value = "8";
+         type = "int";
+      }
+   }
+   element data_i_pio
    {
       datum _sortIndex
       {
@@ -108,19 +100,19 @@
          type = "int";
       }
    }
-   element fin_rot_pio
-   {
-      datum _sortIndex
-      {
-         value = "14";
-         type = "int";
-      }
-   }
-   element fin_sl_pio
+   element data_j_pio
    {
       datum _sortIndex
       {
          value = "13";
+         type = "int";
+      }
+   }
+   element data_ready_pio
+   {
+      datum _sortIndex
+      {
+         value = "10";
          type = "int";
       }
    }
@@ -132,51 +124,27 @@
          type = "String";
       }
    }
-   element MOTOR_RIGHT.s1
+   element op_sel_pio
+   {
+      datum _sortIndex
+      {
+         value = "9";
+         type = "int";
+      }
+   }
+   element resultat_pio
+   {
+      datum _sortIndex
+      {
+         value = "11";
+         type = "int";
+      }
+   }
+   element data_capture_pio.s1
    {
       datum baseAddress
       {
          value = "67121232";
-         type = "String";
-      }
-   }
-   element fin_rot_pio.s1
-   {
-      datum baseAddress
-      {
-         value = "67121152";
-         type = "String";
-      }
-   }
-   element start_sl_pio.s1
-   {
-      datum baseAddress
-      {
-         value = "67121216";
-         type = "String";
-      }
-   }
-   element fin_sl_pio.s1
-   {
-      datum baseAddress
-      {
-         value = "67121168";
-         type = "String";
-      }
-   }
-   element SDRAM.s1
-   {
-      datum baseAddress
-      {
-         value = "33554432";
-         type = "String";
-      }
-   }
-   element LED.s1
-   {
-      datum baseAddress
-      {
-         value = "67121264";
          type = "String";
       }
    }
@@ -188,31 +156,15 @@
          type = "String";
       }
    }
-   element start_rot_pio.s1
+   element op_sel_pio.s1
    {
       datum baseAddress
       {
-         value = "67121200";
+         value = "67121216";
          type = "String";
       }
    }
-   element dir_rot_pio.s1
-   {
-      datum baseAddress
-      {
-         value = "67121184";
-         type = "String";
-      }
-   }
-   element SW.s1
-   {
-      datum baseAddress
-      {
-         value = "67121280";
-         type = "String";
-      }
-   }
-   element MOTOR_LEFT.s1
+   element LED.s1
    {
       datum baseAddress
       {
@@ -220,20 +172,52 @@
          type = "String";
       }
    }
-   element start_rot_pio
+   element SDRAM.s1
    {
-      datum _sortIndex
+      datum baseAddress
       {
-         value = "11";
-         type = "int";
+         value = "33554432";
+         type = "String";
       }
    }
-   element start_sl_pio
+   element resultat_pio.s1
    {
-      datum _sortIndex
+      datum baseAddress
       {
-         value = "10";
-         type = "int";
+         value = "67121184";
+         type = "String";
+      }
+   }
+   element data_i_pio.s1
+   {
+      datum baseAddress
+      {
+         value = "67121168";
+         type = "String";
+      }
+   }
+   element data_j_pio.s1
+   {
+      datum baseAddress
+      {
+         value = "67121152";
+         type = "String";
+      }
+   }
+   element SW.s1
+   {
+      datum baseAddress
+      {
+         value = "67121264";
+         type = "String";
+      }
+   }
+   element data_ready_pio.s1
+   {
+      datum baseAddress
+      {
+         value = "67121200";
+         type = "String";
       }
    }
 }
@@ -251,7 +235,7 @@
  <parameter name="projectName">robot_cutecar_de0nano.qpf</parameter>
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="1" />
- <parameter name="timeStamp" value="1775125314406" />
+ <parameter name="timeStamp" value="1775657875786" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
@@ -265,38 +249,33 @@
  <interface name="sdram_wire" internal="SDRAM.wire" type="conduit" dir="end" />
  <interface name="sdram_clk" internal="clocks.sdram_clk" type="clock" dir="start" />
  <interface
-   name="motorleft"
-   internal="MOTOR_LEFT.external_connection"
+   name="data_capture"
+   internal="data_capture_pio.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="motorright"
-   internal="MOTOR_RIGHT.external_connection"
+   name="op_sel"
+   internal="op_sel_pio.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="start_sl_export"
-   internal="start_sl_pio.external_connection"
+   name="data_ready_pio"
+   internal="data_ready_pio.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="start_rot_export"
-   internal="start_rot_pio.external_connection"
+   name="resultat_pio"
+   internal="resultat_pio.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="dir_rot_export"
-   internal="dir_rot_pio.external_connection"
+   name="data_i_pio"
+   internal="data_i_pio.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="fin_sl_export"
-   internal="fin_sl_pio.external_connection"
-   type="conduit"
-   dir="end" />
- <interface
-   name="fin_rot_export"
-   internal="fin_rot_pio.external_connection"
+   name="data_j_pio"
+   internal="data_j_pio.external_connection"
    type="conduit"
    dir="end" />
  <module kind="clock_source" version="13.0" enabled="1" name="clk_0">
@@ -407,7 +386,7 @@
   <parameter name="tightlyCoupledInstructionMaster2AddrWidth" value="1" />
   <parameter name="tightlyCoupledInstructionMaster3AddrWidth" value="1" />
   <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='SDRAM.s1' start='0x2000000' end='0x4000000' /><slave name='MEMOIRE.s1' start='0x4001000' end='0x4002000' /><slave name='CPU.jtag_debug_module' start='0x4002800' end='0x4003000' /></address-map>]]></parameter>
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='SDRAM.s1' start='0x2000000' end='0x4000000' /><slave name='MEMOIRE.s1' start='0x4001000' end='0x4002000' /><slave name='CPU.jtag_debug_module' start='0x4002800' end='0x4003000' /><slave name='fin_rot_pio.s1' start='0x4003000' end='0x4003010' /><slave name='fin_sl_pio.s1' start='0x4003010' end='0x4003020' /><slave name='dir_rot_pio.s1' start='0x4003020' end='0x4003030' /><slave name='start_rot_pio.s1' start='0x4003030' end='0x4003040' /><slave name='start_sl_pio.s1' start='0x4003040' end='0x4003050' /><slave name='MOTOR_RIGHT.s1' start='0x4003050' end='0x4003060' /><slave name='MOTOR_LEFT.s1' start='0x4003060' end='0x4003070' /><slave name='LED.s1' start='0x4003070' end='0x4003080' /><slave name='SW.s1' start='0x4003080' end='0x4003090' /><slave name='JTAG.avalon_jtag_slave' start='0x4003090' end='0x4003098' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='SDRAM.s1' start='0x2000000' end='0x4000000' /><slave name='MEMOIRE.s1' start='0x4001000' end='0x4002000' /><slave name='CPU.jtag_debug_module' start='0x4002800' end='0x4003000' /><slave name='data_j_pio.s1' start='0x4003000' end='0x4003010' /><slave name='data_i_pio.s1' start='0x4003010' end='0x4003020' /><slave name='resultat_pio.s1' start='0x4003020' end='0x4003030' /><slave name='data_ready_pio.s1' start='0x4003030' end='0x4003040' /><slave name='op_sel_pio.s1' start='0x4003040' end='0x4003050' /><slave name='data_capture_pio.s1' start='0x4003050' end='0x4003060' /><slave name='LED.s1' start='0x4003060' end='0x4003070' /><slave name='SW.s1' start='0x4003070' end='0x4003080' /><slave name='JTAG.avalon_jtag_slave' start='0x4003080' end='0x4003088' /></address-map>]]></parameter>
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="deviceFamilyName" value="Cyclone IV GX" />
   <parameter name="internalIrqMaskSystemInfo" value="32" />
@@ -537,43 +516,7 @@
    kind="altera_avalon_pio"
    version="13.0.1.99.2"
    enabled="1"
-   name="MOTOR_LEFT">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="direction" value="Output" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="14" />
-  <parameter name="clockRate" value="50000000" />
- </module>
- <module
-   kind="altera_avalon_pio"
-   version="13.0.1.99.2"
-   enabled="1"
-   name="MOTOR_RIGHT">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="direction" value="Output" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="14" />
-  <parameter name="clockRate" value="50000000" />
- </module>
- <module
-   kind="altera_avalon_pio"
-   version="13.0.1.99.2"
-   enabled="1"
-   name="start_sl_pio">
+   name="data_capture_pio">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -591,7 +534,7 @@
    kind="altera_avalon_pio"
    version="13.0.1.99.2"
    enabled="1"
-   name="start_rot_pio">
+   name="op_sel_pio">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -602,32 +545,14 @@
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="1" />
+  <parameter name="width" value="2" />
   <parameter name="clockRate" value="50000000" />
  </module>
  <module
    kind="altera_avalon_pio"
    version="13.0.1.99.2"
    enabled="1"
-   name="dir_rot_pio">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="direction" value="Output" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="1" />
-  <parameter name="clockRate" value="50000000" />
- </module>
- <module
-   kind="altera_avalon_pio"
-   version="13.0.1.99.2"
-   enabled="1"
-   name="fin_sl_pio">
+   name="data_ready_pio">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -645,7 +570,7 @@
    kind="altera_avalon_pio"
    version="13.0.1.99.2"
    enabled="1"
-   name="fin_rot_pio">
+   name="resultat_pio">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -656,7 +581,43 @@
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="1" />
+  <parameter name="width" value="9" />
+  <parameter name="clockRate" value="50000000" />
+ </module>
+ <module
+   kind="altera_avalon_pio"
+   version="13.0.1.99.2"
+   enabled="1"
+   name="data_i_pio">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="8" />
+  <parameter name="clockRate" value="50000000" />
+ </module>
+ <module
+   kind="altera_avalon_pio"
+   version="13.0.1.99.2"
+   enabled="1"
+   name="data_j_pio">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="8" />
   <parameter name="clockRate" value="50000000" />
  </module>
  <connection
@@ -721,12 +682,12 @@
    end="LED.reset" />
  <connection kind="avalon" version="13.0" start="CPU.data_master" end="SW.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04003080" />
+  <parameter name="baseAddress" value="0x04003070" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="avalon" version="13.0" start="CPU.data_master" end="LED.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04003070" />
+  <parameter name="baseAddress" value="0x04003060" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="reset" version="13.0" start="clk_0.clk_reset" end="JTAG.reset" />
@@ -736,7 +697,7 @@
    start="CPU.data_master"
    end="JTAG.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04003090" />
+  <parameter name="baseAddress" value="0x04003080" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -792,36 +753,22 @@
    kind="reset"
    version="13.0"
    start="clk_0.clk_reset"
-   end="MOTOR_LEFT.reset" />
- <connection
-   kind="avalon"
-   version="13.0"
-   start="CPU.data_master"
-   end="MOTOR_LEFT.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04003060" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
+   end="data_capture_pio.reset" />
  <connection
    kind="reset"
    version="13.0"
    start="CPU.jtag_debug_module_reset"
-   end="MOTOR_LEFT.reset" />
+   end="data_capture_pio.reset" />
  <connection
    kind="clock"
    version="13.0"
    start="clocks.sys_clk"
-   end="MOTOR_LEFT.clk" />
- <connection
-   kind="reset"
-   version="13.0"
-   start="clk_0.clk_reset"
-   end="MOTOR_RIGHT.reset" />
+   end="data_capture_pio.clk" />
  <connection
    kind="avalon"
    version="13.0"
    start="CPU.data_master"
-   end="MOTOR_RIGHT.s1">
+   end="data_capture_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x04003050" />
   <parameter name="defaultConnection" value="false" />
@@ -829,23 +776,13 @@
  <connection
    kind="reset"
    version="13.0"
-   start="CPU.jtag_debug_module_reset"
-   end="MOTOR_RIGHT.reset" />
- <connection
-   kind="clock"
-   version="13.0"
-   start="clocks.sys_clk"
-   end="MOTOR_RIGHT.clk" />
- <connection
-   kind="reset"
-   version="13.0"
    start="clk_0.clk_reset"
-   end="start_sl_pio.reset" />
+   end="op_sel_pio.reset" />
  <connection
    kind="avalon"
    version="13.0"
    start="CPU.data_master"
-   end="start_sl_pio.s1">
+   end="op_sel_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x04003040" />
   <parameter name="defaultConnection" value="false" />
@@ -854,22 +791,17 @@
    kind="reset"
    version="13.0"
    start="CPU.jtag_debug_module_reset"
-   end="start_sl_pio.reset" />
+   end="op_sel_pio.reset" />
  <connection
    kind="clock"
    version="13.0"
    start="clocks.sys_clk"
-   end="start_sl_pio.clk" />
- <connection
-   kind="reset"
-   version="13.0"
-   start="clk_0.clk_reset"
-   end="start_rot_pio.reset" />
+   end="op_sel_pio.clk" />
  <connection
    kind="avalon"
    version="13.0"
    start="CPU.data_master"
-   end="start_rot_pio.s1">
+   end="data_ready_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x04003030" />
   <parameter name="defaultConnection" value="false" />
@@ -877,23 +809,28 @@
  <connection
    kind="reset"
    version="13.0"
+   start="clk_0.clk_reset"
+   end="data_ready_pio.reset" />
+ <connection
+   kind="reset"
+   version="13.0"
    start="CPU.jtag_debug_module_reset"
-   end="start_rot_pio.reset" />
+   end="data_ready_pio.reset" />
  <connection
    kind="clock"
    version="13.0"
    start="clocks.sys_clk"
-   end="start_rot_pio.clk" />
+   end="data_ready_pio.clk" />
  <connection
    kind="reset"
    version="13.0"
    start="clk_0.clk_reset"
-   end="dir_rot_pio.reset" />
+   end="resultat_pio.reset" />
  <connection
    kind="avalon"
    version="13.0"
    start="CPU.data_master"
-   end="dir_rot_pio.s1">
+   end="resultat_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x04003020" />
   <parameter name="defaultConnection" value="false" />
@@ -902,22 +839,22 @@
    kind="reset"
    version="13.0"
    start="CPU.jtag_debug_module_reset"
-   end="dir_rot_pio.reset" />
+   end="resultat_pio.reset" />
  <connection
    kind="clock"
    version="13.0"
    start="clocks.sys_clk"
-   end="dir_rot_pio.clk" />
+   end="resultat_pio.clk" />
  <connection
    kind="reset"
    version="13.0"
    start="clk_0.clk_reset"
-   end="fin_sl_pio.reset" />
+   end="data_i_pio.reset" />
  <connection
    kind="avalon"
    version="13.0"
    start="CPU.data_master"
-   end="fin_sl_pio.s1">
+   end="data_i_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x04003010" />
   <parameter name="defaultConnection" value="false" />
@@ -926,22 +863,22 @@
    kind="reset"
    version="13.0"
    start="CPU.jtag_debug_module_reset"
-   end="fin_sl_pio.reset" />
+   end="data_i_pio.reset" />
  <connection
    kind="clock"
    version="13.0"
    start="clocks.sys_clk"
-   end="fin_sl_pio.clk" />
+   end="data_i_pio.clk" />
  <connection
    kind="reset"
    version="13.0"
    start="clk_0.clk_reset"
-   end="fin_rot_pio.reset" />
+   end="data_j_pio.reset" />
  <connection
    kind="avalon"
    version="13.0"
    start="CPU.data_master"
-   end="fin_rot_pio.s1">
+   end="data_j_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x04003000" />
   <parameter name="defaultConnection" value="false" />
@@ -950,12 +887,12 @@
    kind="reset"
    version="13.0"
    start="CPU.jtag_debug_module_reset"
-   end="fin_rot_pio.reset" />
+   end="data_j_pio.reset" />
  <connection
    kind="clock"
    version="13.0"
    start="clocks.sys_clk"
-   end="fin_rot_pio.clk" />
+   end="data_j_pio.clk" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
 </system>
