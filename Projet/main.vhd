@@ -1,0 +1,4 @@
+pll_inst : pll PORT MAP (
+    inclk0  => clk_50,     -- horloge carte 50 MHz
+    c0      => clk_40      -- sortie 40 MHz vers capteurs_sol
+);

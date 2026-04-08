@@ -1,0 +1,10 @@
+PLL_Name	nios_system:NiosII|nios_system_clocks:clocks|altpll:DE_Clock_Generator_System|altpll_0vb2:auto_generated|pll1
+PLLJITTER	35
+PLLSPEmax	84
+PLLSPEmin	-53
+
+PLL_Name	pll_2freqs:PLL_inst|altpll:altpll_component|pll40_altpll:auto_generated|pll1
+PLLJITTER	41
+PLLSPEmax	84
+PLLSPEmin	-53
+
